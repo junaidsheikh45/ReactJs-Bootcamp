@@ -15,7 +15,7 @@ jobs:
     - name: Installing Node
       uses: actions/setup-node@v2-beta
       with: 
-        node-version: 12
+        node-version: 12.16.1
     
     - name: Installing Surge
       run: npm install --global surge
