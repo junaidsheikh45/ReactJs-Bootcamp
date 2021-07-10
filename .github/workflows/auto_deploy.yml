@@ -1,0 +1,33 @@
+name: ReactJs Bootcamp
+
+on:
+  push:
+    branches: [ master ]
+#   pull_request:
+#     branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Installing Node
+      uses: actions/setup-node@v2-beta
+      with: 
+        node-version: 12
+    
+    - name: Installing Surge
+      run: npm install --g surge
+      
+    - name: deploying using serge
+      run: surge ./ reactjsbootcamp.surge.sh --token "e9eeab9ca13585f3002f0c87cf8c1421" $ {{ secrets.Surge_Token }}
+      
+  
+    - name: In
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
