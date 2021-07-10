@@ -3,8 +3,6 @@ name: ReactJs Bootcamp
 on:
   push:
     branches: [ master ]
-#   pull_request:
-#     branches: [ main ]
 
 jobs:
   build:
@@ -20,7 +18,7 @@ jobs:
         node-version: 12
     
     - name: Installing Surge
-      run: npm install --g surge
+      run: npm install --global surge
       
     - name: deploying using serge
       run: surge ./ reactjsbootcamp.surge.sh --token $ {{ secrets.Surge_Token }}
