@@ -18,14 +18,14 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-      # Runs a single command using the runners shell
-      - name: Installing Node
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 12
+      
+    - name: Installing Node
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: 12
 
-      # Runs a set of commands using the runners shell
-      - name: Installing surge
-        run: npm install --global surge
-      - name: deploying using surge
-        run: surge ./ reactjsbootcamp.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+    - name: Installing surge
+      run: npm install --global surge
+    
+    - name: deploying using surge
+      run: surge ./ reactjsbootcamp.surge.sh --token ${{ secrets.SURGE_TOKEN }}
